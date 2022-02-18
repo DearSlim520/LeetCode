@@ -10,7 +10,7 @@ class Solution:
             left_height = dfs(root.left)
             right_height = dfs(root.right)
             
-            length = max(length, left_height + right_height)
+            length = max(length, left_height + right_height)    # calculate diameter of the currentnode
             return 1 + max(left_height, right_height)
         
         dfs(root)
