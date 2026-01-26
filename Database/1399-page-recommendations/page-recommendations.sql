@@ -5,8 +5,11 @@ with cte_friend_list as (
     from friendship
     where user1_id = 1 or user2_id = 1
 )
-select distinct page_id as recommended_page
+select distinct l.page_id as recommended_page
 from likes l
     inner join cte_friend_list f
         on l.user_id = f.user_id
-where page_id not in (select page_id from likes where user_id = 1)
+    left join likes l2
+        on l2.user_id = 1
+        and l.page_id = l2.page_id
+where l2.page_id is null
