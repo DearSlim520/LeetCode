@@ -13,15 +13,15 @@ with cte_prev as (
         from succeeded
         where year(success_date) = '2019'
     ),
-    cte_island as (
-        select status,
+    cte_diff as ( 
+        select status, 
                event_date,
-               sum(case when datediff(event_date, prev_event_date) > 1 then 1 else 0 end) over (order by event_date asc) as island,
-               row_number() over (order by event_date) as rn
+               datediff(event_date, '2018-12-31') - row_number() over (partition by status order by event_date) as diff
         from cte_prev
     )
 select status as period_state, 
        min(event_date) as start_date,
        max(event_date) as end_date
-from cte_island
-group by island
+from cte_diff
+group by status, diff
+order by start_date
