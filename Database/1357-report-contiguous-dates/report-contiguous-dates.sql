@@ -13,22 +13,15 @@ with cte_prev as (
         from succeeded
         where year(success_date) = '2019'
     ),
-    cte_date_w_flags as (
+    cte_island as (
         select status,
                event_date,
-               sum(case when datediff(event_date, prev_event_date) > 1 then 1 else 0 end) over (order by event_date asc) as sum_start,
+               sum(case when datediff(event_date, prev_event_date) > 1 then 1 else 0 end) over (order by event_date asc) as island,
                row_number() over (order by event_date) as rn
         from cte_prev
     )
-    -- ,
-    -- cte_island as (
-    --     select status, 
-    --            event_date,
-    --            sum(is_start) over (order by event_date asc) as sum_start
-    --     from cte_date_w_flags
-    -- )
 select status as period_state, 
        min(event_date) as start_date,
        max(event_date) as end_date
-from cte_date_w_flags
-group by sum_start
+from cte_island
+group by island
