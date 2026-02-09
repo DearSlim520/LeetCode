@@ -13,7 +13,6 @@ class Solution:
         dp1 = [0] * (n + 1)
         dp2 = [0] * (n + 1)
         dp1[1] = nums[0]
-        dp2[2] = nums[0]
 
         for i in range(2, n+1):
             dp1[i] = max(dp1[i-1], dp1[i-2] + nums[i - 1])
