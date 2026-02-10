@@ -1,27 +1,21 @@
 class Solution:
     def __init__(self):
-        self.seen = {'(':0, ')':0}
         self.ans = []
 
     def generateParenthesis(self, n: int) -> List[str]:
-        self.backtrack(n, "")
+        self.backtrack(n, "", 0, 0)
         return self.ans
 
-    def backtrack(self, n: int, track: str):
-        # if self.seen['('] == n and self.seen[')'] == n:
+    def backtrack(self, n: int, track: str, left: int, right: int):
         if len(track) == n * 2:
             self.ans.append(track)
             return
         
         # pruning
-        if self.seen['('] < n:
-            self.seen['('] += 1
-            self.backtrack(n, track + '(')
-            self.seen['('] -= 1
+        if left < n:
+            self.backtrack(n, track + '(', left + 1, right)
 
-        if self.seen[')'] < self.seen['(']:
-            self.seen[')'] += 1
-            self.backtrack(n, track + ')')
-            self.seen[')'] -= 1
+        if right < left:
+            self.backtrack(n, track + ')', left, right + 1)
 
         return
