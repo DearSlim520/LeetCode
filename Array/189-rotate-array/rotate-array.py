@@ -3,23 +3,21 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        # [:k][k+1:] = [n-k-1:][:n-k]
+        # 经典：三步反转法
         if k == 0:
             return nums
 
-        # 补位
         n = len(nums)
-        tmp = nums[n-k-1:]
         k = k % n
-        p = n-k-1
-        i = n - 1
-        while p >= 0:
-            nums[i] = nums[p]
-            p -= 1
-            i -= 1
-        
-        for t in range(len(tmp)-1, -1, -1):
-            nums[i] = tmp[t]
-            i -= 1
+
+        self.reverse(nums, 0, n-1)
+        self.reverse(nums, 0, k-1)
+        self.reverse(nums, k, n-1)
 
         return nums
+        
+    def reverse(self, nums: List[int], left: int, right: int):
+        while left < right:
+            nums[left], nums[right] = nums[right], nums[left]
+            left += 1
+            right -= 1
