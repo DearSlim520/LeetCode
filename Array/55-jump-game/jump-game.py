@@ -12,7 +12,7 @@ class Solution:
 
         for i in range(n-1):
             if furthest < i:
-                break
+                return False
             furthest = max(furthest, i + nums[i])
             if furthest >= n - 1:
                 return True
