@@ -1,18 +1,12 @@
 class Solution:
     def jump(self, nums: List[int]) -> int:
-        # choices: use / not use
-        # dp[i] : step to the last (if can)
-        # curr_furthest = i + nums[i]
-        # dp[i] = 
-
         n = len(nums)
+        dp = [n] * n
         if n == 1:
             return 0
-        dp = [n] * n
+
         for i in range(n-2, -1, -1):
-            if nums[i] == 0:
-                continue
-            else:
+            if nums[i] > 0:
                 curr_furthest = i + nums[i]
                 if curr_furthest >= n-1:
                     dp[i] = 1
