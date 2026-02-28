@@ -8,8 +8,8 @@ class Solution:
             left_prod *= nums[i]
 
         right_prod = 1
-        for j in range(n-1, -1, -1):
-            res[j] *= right_prod
-            right_prod *= nums[j]
+        for i in range(n-1, -1, -1):
+            res[i] *= right_prod
+            right_prod *= nums[i]
 
         return res
