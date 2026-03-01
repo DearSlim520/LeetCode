@@ -5,7 +5,7 @@ class Solution:
             return 0
 
         area = 0
-        curArea, curSide = 0, 0
+        curArea, curSide = 0, height[0]
         # left to right
         for i in range(n):
             if height[i] > curSide:
@@ -15,7 +15,7 @@ class Solution:
             else:
                 curArea += curSide - height[i]
 
-        curArea, curSide = 0, 0
+        curArea, curSide = 0, height[-1]
         # right to left
         for i in range(n-1, -1, -1):
             if height[i] >= curSide:
