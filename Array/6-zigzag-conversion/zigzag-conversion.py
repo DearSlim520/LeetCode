@@ -13,8 +13,4 @@ class Solution:
                 direction = direction * -1
             row += direction
 
-        res = ""
-        for i in range(numRows):
-            res += rows[i]
-        
-        return res
+        return ''.join(rows)
