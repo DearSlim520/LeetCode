@@ -7,13 +7,14 @@ class Solution:
         
         while r < n:
             cur = s[r]
+            r += 1
             curWindow[cur] = curWindow.get(cur, 0) + 1
             while l < r and curWindow[cur] > 1:
                 curWindow[s[l]] -= 1
                 l += 1
-            maxLen = max(maxLen, r - l + 1)
+            maxLen = max(maxLen, r - l)
 
-            r += 1
+            
 
         return maxLen
             
