@@ -3,26 +3,38 @@ class Solution:
         """
         Do not return anything, modify matrix in-place instead.
         """
+        # Only focus on save the space complexity
         m, n = len(matrix), len(matrix[0])
-        rows = []
-        cols = []
+        first_row_zero, first_col_zero = False, False
+
+        # first row
+        for i in range(m):
+            if matrix[i][0] == 0:
+                first_col_zero = True
+                break
+
+        for j in range(n):
+            if matrix[0][j] == 0:
+                first_row_zero = True
+                break
 
         for i in range(m):
             for j in range(n):
                 if matrix[i][j] == 0:
-                    if i not in rows:
-                        rows.append(i)
-                    if j not in cols:
-                        cols.append(j)
-        
-        for i in rows:
-            for j in range(n):
-                matrix[i][j] = 0
+                    matrix[0][j] = 0
+                    matrix[i][0] = 0
 
-        for j in cols:
+        for i in range(1, m):
+            for j in range(1, n):
+                if matrix[i][0] == 0 or matrix[0][j] == 0:
+                    matrix[i][j] = 0
+
+        if first_col_zero:
             for i in range(m):
-                matrix[i][j] = 0
-        
-        return matrix
+                matrix[i][0] = 0
 
-        
+        if first_row_zero:
+            for j in range(n):
+                matrix[0][j] = 0
+
+        return matrix
