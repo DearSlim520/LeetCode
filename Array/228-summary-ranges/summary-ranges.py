@@ -7,7 +7,7 @@ class Solution:
         n = len(nums)
         start = 0
         for i in range(n):
-            if (i < n-1 and nums[i+1] > nums[i] + 1) or i == n-1:
+            if i == n-1 or (i < n-1 and nums[i+1] > nums[i] + 1):
                 if start < i:
                     res.append(str(nums[start]) + '->' + str(nums[i]))
                 elif start == i:
