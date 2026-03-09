@@ -12,8 +12,7 @@ class Solution:
                 if start == i:
                     res.append(intervals[i])
                 else:
-                    res.append([intervals[start][0], max(maxEnd, intervals[i][1])])
+                    res.append([intervals[start][0], maxEnd])
                 start = i + 1
-                
 
         return res
