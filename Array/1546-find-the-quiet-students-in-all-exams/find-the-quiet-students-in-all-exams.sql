@@ -12,7 +12,7 @@ with cte_high_low as (
         from exam e
             inner join cte_high_low c
                 on e.exam_id = c.exam_id
-                and e.score in (c.highest, c.lowest)
+                and (e.score = c.highest OR e.score = c.lowest)
     )
 select distinct e.student_id, s.student_name
 from exam e
