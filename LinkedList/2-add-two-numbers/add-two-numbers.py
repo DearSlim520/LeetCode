@@ -17,7 +17,7 @@ class Solution:
             if l2:
                 curVal += l2.val
                 l2 = l2.next
-            carry = 1 if curVal > 9 else 0
+            carry = curVal // 10
             cur.next = ListNode(curVal % 10)
             cur = cur.next
             
