@@ -6,23 +6,20 @@
 class Solution:
     def addTwoNumbers(self, l1: Optional[ListNode], l2: Optional[ListNode]) -> Optional[ListNode]:
         p1, p2 = l1, l2
-        remainer = 0
+        carry = 0
         dummy = ListNode(0)
-        res = dummy
+        cur = dummy
         
-        while p1 or p2:
-            curVal = remainer
+        while p1 or p2 or carry:
+            curVal = carry
             if p1:
                 curVal += p1.val
                 p1 = p1.next
             if p2:
                 curVal += p2.val
                 p2 = p2.next
-            remainer = 1 if curVal > 9 else 0
-            res.next = ListNode(curVal % 10)
-            res = res.next
-
-        if remainer:
-            res.next = ListNode(remainer)
+            carry = 1 if curVal > 9 else 0
+            cur.next = ListNode(curVal % 10)
+            cur = cur.next
             
         return dummy.next
