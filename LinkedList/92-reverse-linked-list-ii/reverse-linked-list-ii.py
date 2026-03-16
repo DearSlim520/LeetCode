@@ -26,8 +26,8 @@ class Solution:
         after = end.next
         end.next = None
         prev.next = None
-        newHead = self.reverse(newTail, end)
-        prev.next = newHead
+        self.reverse(newTail, end)
+        prev.next = end
         newTail.next = after
 
         return dummy.next
@@ -40,4 +40,3 @@ class Solution:
             curr.next = prev
             prev = curr
             curr = tmp
-        return prev
