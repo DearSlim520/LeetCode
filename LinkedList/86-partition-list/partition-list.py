@@ -19,13 +19,10 @@ class Solution:
         if not right:
             return head
 
-        print(left.val, right.val)
         # find targets
         prev = right
         while prev and prev.next:
-            print(prev.val)
             if prev.next.val < x:
-                print('found less')
                 prev, left = self.switch(prev, left, right)
             else:
                 prev = prev.next
