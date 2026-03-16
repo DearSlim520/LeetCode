@@ -8,32 +8,20 @@ class Solution:
         if not head or not head.next:
             return head
 
-        dummy = ListNode(-101)
-        dummy.next = head
-        left = dummy
+        lessDummy, moreDummy = ListNode(0), ListNode(0)
+        less, more = lessDummy, moreDummy
 
-        # find the spot to insert
-        while left.next and left.next.val < x:
-            left = left.next
-        right = left.next
-        if not right:
-            return head
-
-        # find targets
-        prev = right
-        while prev and prev.next:
-            if prev.next.val < x:
-                prev, left = self.switch(prev, left, right)
+        p = head
+        while p:
+            if p.val < x:
+                less.next = p
+                less = less.next
             else:
-                prev = prev.next
+                more.next = p
+                more = more.next
+            p = p.next
 
-        return dummy.next
+        more.next = None
+        less.next = moreDummy.next
         
-
-    def switch(self, prev: ListNode, left: ListNode, right: ListNode) -> ListNode:
-        target = prev.next
-        prev.next = prev.next.next
-        left.next = target
-        target.next = right
-
-        return prev, left.next
+        return lessDummy.next
