@@ -16,8 +16,8 @@ class Solution:
         for _ in range(left - 1):
             prev = prev.next
         
-        start = prev.next
-        end = start
+        newTail = prev.next
+        end = newTail
         # between
         for _ in range(right - left):
             end = end.next
@@ -25,15 +25,16 @@ class Solution:
         # after
         after = end.next
         end.next = None
-        newHead = self.reverse(start, end)
+        prev.next = None
+        newHead = self.reverse(newTail, end)
         prev.next = newHead
-        start.next = after
+        newTail.next = after
 
         return dummy.next
 
-    def reverse(self, start: ListNode, end: ListNode):
+    def reverse(self, newTail: ListNode, end: ListNode):
         prev = None
-        curr = start
+        curr = newTail
         while prev != end:
             tmp = curr.next
             curr.next = prev
