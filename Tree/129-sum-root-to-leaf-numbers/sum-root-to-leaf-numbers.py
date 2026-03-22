@@ -12,11 +12,13 @@ class Solution:
         def traverse(root, track):
             if not root:
                 return 0
+
+            current = track * 10 + root.val
             if not root.left and not root.right:
-                return track * 10 + root.val
+                return current
             
-            tl = traverse(root.left, track * 10 + root.val)
-            tr = traverse(root.right, track * 10 + root.val)
+            tl = traverse(root.left, current)
+            tr = traverse(root.right, current)
 
             return tl + tr
 
