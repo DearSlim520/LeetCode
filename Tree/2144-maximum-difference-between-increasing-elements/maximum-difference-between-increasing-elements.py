@@ -1,10 +1,12 @@
 class Solution:
     def maximumDifference(self, nums: List[int]) -> int:
-        res = 0
+        res = -1
         mini = nums[0]
 
         for num in nums:
-            res = max(res, num - mini)
-            mini = min(mini, num)
+            if num > mini:
+                res = max(res, num - mini)
+            else:
+                mini = num
             
-        return res if res > 0 else -1
+        return res
