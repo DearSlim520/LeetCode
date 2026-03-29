@@ -13,8 +13,8 @@ class Solution:
                 return
             if hasSibling == False:
                 res.append(node.val)
-            dfs(node.left, node.left is not None and node.right is not None)
-            dfs(node.right, node.left is not None and node.right is not None)
+            dfs(node.left, node.right is not None)
+            dfs(node.right, node.left is not None)
             return
 
         dfs(root, True)
