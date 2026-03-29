@@ -10,7 +10,6 @@ class Solution:
         
         # preorder dfs
         def dfs(root):
-            nonlocal tree1
             if not root:
                 return
             tree1.add(root.val)
