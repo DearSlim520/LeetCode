@@ -8,7 +8,6 @@ class Solution:
     def getLonelyNodes(self, root: Optional[TreeNode]) -> List[int]:
         res = []
         def dfs(node, hasSibling) -> int:
-            nonlocal res
             if not node:
                 return
             if hasSibling == False:
