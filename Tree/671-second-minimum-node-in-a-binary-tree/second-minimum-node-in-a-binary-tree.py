@@ -6,11 +6,12 @@
 #         self.right = right
 class Solution:
     def findSecondMinimumValue(self, root: Optional[TreeNode]) -> int:
-        def dfs(root, curMin) -> int:
+        globalMin = root.val
+        def dfs(root, globalMin) -> int:
             if not root:
                 return float('inf')
 
-            if root.val > curMin:
+            if root.val > globalMin:
                 return root.val
 
             return min(dfs(root.left, root.val), dfs(root.right, root.val))
