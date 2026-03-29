@@ -10,11 +10,11 @@ class Solution:
         def dfs(node, hasSibling) -> int:
             if not node:
                 return
-            if hasSibling == False:
+            if not hasSibling and node != root:
                 res.append(node.val)
             dfs(node.left, node.right is not None)
             dfs(node.right, node.left is not None)
             return
 
-        dfs(root, True)
+        dfs(root, False)
         return res
