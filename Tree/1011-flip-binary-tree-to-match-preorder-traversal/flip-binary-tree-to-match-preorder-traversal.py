@@ -19,9 +19,7 @@ class Solution:
                 self.res.append(node.val)
                 return dfs(node.right) and dfs(node.left)
             # flip
-            else:
-                return dfs(node.left) and dfs(node.right)
-            return False
+            return dfs(node.left) and dfs(node.right)
         
         if dfs(root) and self.index == len(voyage):
             return self.res
