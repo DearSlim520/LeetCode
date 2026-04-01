@@ -10,8 +10,8 @@ class Solution:
         def dfs(node, pVal, curStep):
             if not node:
                 return
-            curStep += 1
             if node.val == pVal + 1:
+                curStep += 1
                 self.res = max(self.res, curStep)
             else:
                 curStep = 1
