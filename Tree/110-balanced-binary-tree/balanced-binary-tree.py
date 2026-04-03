@@ -9,9 +9,10 @@ class Solution:
         self.maxDiff = 0
         def dfs(node, depth):
             if not node:
-                return depth - 1
-            l = dfs(node.left, depth + 1)
-            r = dfs(node.right, depth + 1)
+                return depth
+            depth += 1
+            l = dfs(node.left, depth)
+            r = dfs(node.right, depth)
             self.maxDiff = max(self.maxDiff, abs(l - r))
             return max(l, r)
 
