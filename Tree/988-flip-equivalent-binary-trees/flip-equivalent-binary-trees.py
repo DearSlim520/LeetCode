@@ -20,15 +20,6 @@ class Solution:
                 flip = dfs(node1.left, node2.left) and dfs(node1.right, node2.right)
                 unflip = dfs(node1.right, node2.left) and dfs(node1.left, node2.right)
                 return flip or unflip
-                # if node1.left and node2.left:
-                #     if node1.left.val == node2.left.val:
-                #         return 
-                #     else:
-                #         return dfs(node1.right, node2.left) and dfs(node1.left, node2.right)
-                # elif not node1.left and not node2.left:
-                    
-                # else: return False
-            
 
         return dfs(root1, root2)
         
