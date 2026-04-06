@@ -19,4 +19,4 @@ class Solution:
 
         dfs(root, 0)
         print
-        return list(self.seen.values()) if self.seen else []
+        return list(self.seen.values())
