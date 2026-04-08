@@ -1,1 +1,1 @@
-<h2>average-of-levels-in-binary-tree Notes</h2><hr>[ Time taken: 25m 26s ]
+<h2>average-of-levels-in-binary-tree Notes</h2><hr>[ Time taken: 8m 34s ]
