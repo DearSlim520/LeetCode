@@ -20,6 +20,6 @@ class Solution:
                 total += cur.val
                 if cur.left: q.append(cur.left)
                 if cur.right: q.append(cur.right)
-            res.append(round(total/sz, 5))
+            res.append(total/sz)
         
         return res
