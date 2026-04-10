@@ -10,12 +10,11 @@ class Solution:
         def isValid(node)->bool:
             if not node:
                 return True
-            l = isValid(node.left)
+            if not isValid(node.left):
+                return False
             if node.val <= self.prev:
                 return False
             self.prev = node.val
-            r = isValid(node.right)
-
-            return l and r
+            return isValid(node.right)
 
         return isValid(root)
