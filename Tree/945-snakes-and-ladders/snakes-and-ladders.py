@@ -7,7 +7,7 @@ class Solution:
             row = (num - 1) // n
             col = (num - 1) % n
             if row % 2 == 1:
-                col = n - 1 - col
+                col = n - 1 - col 
             return n - 1 - row, col
 
         # bfs
@@ -24,6 +24,6 @@ class Solution:
                 curPos = board[i][j] if board[i][j] != -1 else nextPos  # take ladder if has
                 if curPos not in visited:
                     visited.add(curPos)
-                    q.append([curPos, step + 1])
+                    q.append((curPos, step + 1))
 
         return -1
