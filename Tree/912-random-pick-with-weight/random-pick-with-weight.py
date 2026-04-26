@@ -10,7 +10,7 @@ class Solution:
         target = random.randint(1, self.prefixSum[-1])
         left, right = 0, len(self.prefixSum) - 1
         while left < right:
-            mid = left + (right - left) // 2
+            mid = (right + left) // 2
             if self.prefixSum[mid] < target:
                 left = mid 
             elif self.prefixSum[mid] > target:
