@@ -8,15 +8,17 @@ class Solution:
 
     def pickIndex(self) -> int:
         target = random.randint(1, self.prefixSum[-1])
-        left, right = 1, len(self.prefixSum) - 1
+        left, right = 0, len(self.prefixSum) - 1
         while left < right:
             mid = left + (right - left) // 2
             if self.prefixSum[mid] < target:
-                left = mid + 1
+                left = mid 
             elif self.prefixSum[mid] > target:
                 right = mid
             else:
                 return mid-1
+            if right - left == 1:
+                return left
         return left - 1
 
 
