@@ -13,8 +13,10 @@ class Solution:
             mid = left + (right - left) // 2
             if self.prefixSum[mid] < target:
                 left = mid + 1
-            else:
+            elif self.prefixSum[mid] > target:
                 right = mid
+            else:
+                return mid-1
         return left - 1
 
 
