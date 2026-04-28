@@ -6,4 +6,4 @@ class Solution:
             if len(minh) > k:
                 heapq.heappop(minh)
         
-        return minh[0]
+        return heapq.heappop(minh)
