@@ -1,8 +1,7 @@
 class Solution:
     def generateParenthesis(self, n: int) -> List[str]:
-        
         def backtrack(track: str, preCnt: int, postCnt: int):
-            if len(track) == n * 2 and preCnt == postCnt:
+            if len(track) == n * 2:
                 res.append(track[:])
                 return
             if postCnt > preCnt:
