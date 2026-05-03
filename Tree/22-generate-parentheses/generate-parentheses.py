@@ -5,8 +5,6 @@ class Solution:
             if len(track) == n * 2 and preCnt == postCnt:
                 res.append(track[:])
                 return
-            if len(track) == n * 2:
-                return
             if postCnt > preCnt:
                 return
             
